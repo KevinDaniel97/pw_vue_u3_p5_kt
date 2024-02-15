@@ -1,5 +1,5 @@
 <template>
-  <h1>Pagina estudainte</h1>
+  <h1>Pagina Estudainte</h1>
   <Estudiante />
 </template>
 
@@ -13,4 +13,9 @@ export default {
 };
 </script>
 <style>
+h1 {
+  padding-bottom: 15px;
+  color: #00268f;
+  text-align: center;
+}
 </style>
