@@ -3,15 +3,21 @@
     <div class="formulario">
       <h1>Componente Estudiante</h1>
       <div class="consultar">
-        <input v-model="id" type="text" />
+        <input v-model="id" type="text" placeholder="Imgrese ID" />
         <div class="boton">
           <button @click="consultarPorId">Consultar</button>
         </div>
       </div>
       <div class="insertar">
-        <p type="Nombre: "><input v-model="nombre" type="text" /></p>
-        <p type="Apellido: "><input v-model="apellido" type="text" /></p>
-        <p type="Género: "><input v-model="genero" type="text" /></p>
+        <p type="Nombre: ">
+          <input v-model="nombre" type="text" placeholder="Nombre" />
+        </p>
+        <p type="Apellido: ">
+          <input v-model="apellido" type="text" placeholder="Apellido" />
+        </p>
+        <p type="Género: ">
+          <input v-model="genero" type="text" placeholder="Genero" />
+        </p>
         <p type="Fecha de nacimiento: ">
           <input v-model="fechaNacimiento" type="datetime-local" />
         </p>
@@ -24,6 +30,8 @@
         <p type="Carrera: "><input v-model="carrera" type="text" /></p>
         <div class="boton">
           <button @click="insertar">Insertar</button>
+          <button @click="actualizar">Actualizar</button>
+          <button @click="eliminar">Eliminar</button>
         </div>
       </div>
     </div>
@@ -34,6 +42,8 @@
 import {
   consultarEstudianteFachada,
   insertarFachada,
+  actualizarFachada,
+  eliminarFachada,
 } from "../helpers/clienteEstudiante.js";
 
 export default {
@@ -80,6 +90,24 @@ export default {
       };
 
       await insertarFachada(estuBody);
+    },
+    async actualizar() {
+      const body = {
+        nombre: this.nombre,
+        apellido: this.apellido,
+        genero: this.genero,
+        fechaNacimiento: this.fechaNacimiento,
+        direccion: this.direccion,
+        edad: this.edad,
+        correo: this.correo,
+        facultad: this.facultad,
+        carrera: this.carrera,
+      };
+
+      await actualizarFachada(this.id, body);
+    },
+    async eliminar() {
+      await eliminarFachada(this.id);
     },
   },
 };

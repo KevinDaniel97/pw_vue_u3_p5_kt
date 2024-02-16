@@ -13,12 +13,29 @@ const insertar = (body) => {
     console.log(data)
 }
 
-export const consultarEstudianteFachada = (id) => {
-    return consultarEstudiante(id);
+const actualizar = (id, body) => {
+    axios.put(`http://localhost:8080/API/v1.0/Matricula/estudiantes/${id}`, body).then(r => r.data)
+    console.log(data)
+}
+const eliminar = async (id) => {
+    axios.delete(`http://localhost:8080/API/v1.0/Matricula/estudiantes/${id}`).then(r => r.data)
+    console.log(data)
+}
+
+//fachadas
+export const consultarEstudianteFachada = async (id) => {
+    return await consultarEstudiante(id);
 }
 export const insertarFachada = async (body) => {
     await insertar(body);
 }
 
+export const actualizarFachada = async (id, body) => {
+    await actualizar(id, body);
+}
+
+export const eliminarFachada = async (id) => {
+    await eiminar(id);
+}
 
 
