@@ -1,5 +1,6 @@
 <template>
-  <h1>Pagina Estudainte</h1>
+  <!--<h1>Pagina Estudainte</h1>-->
+  <h1>Universidad Central</h1>
   <Estudiante />
 </template>
 
