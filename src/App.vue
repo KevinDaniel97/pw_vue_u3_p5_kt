@@ -1,6 +1,6 @@
 <template>
   <!--<EstudiantePagina />-->
-  <h1>universidad central del Ecuador</h1>
+  <h1>Universidad Central del Ecuador</h1>
   <router-view />
 </template>
 

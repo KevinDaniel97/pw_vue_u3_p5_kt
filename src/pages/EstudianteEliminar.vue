@@ -1,7 +1,11 @@
 <template>
   <h1>Pagina Eliminar</h1>
-  <input v-model="id" type="text" placeholder="Imgrese ID" />
-  <button @click="eliminar">Eliminar</button>
+  <div class="container">
+    <div class="formElim">
+      <input v-model="id" type="text" placeholder="Imgrese ID" />
+      <button @click="eliminar">Eliminar</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -21,4 +25,9 @@ export default {
 </script>
 
 <style>
+.formElim {
+  text-align: center;
+  border-radius: 8px;
+  padding: 20px 30px;
+}
 </style>

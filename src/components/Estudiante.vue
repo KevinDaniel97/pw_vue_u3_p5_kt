@@ -3,10 +3,7 @@
     <div class="formulario">
       <h1>Componente Estudiante</h1>
       <div class="consultar">
-        <input v-model="id" type="text" placeholder="Imgrese ID" />
-        <div class="boton">
-          <button @click="consultarPorId">Consultar</button>
-        </div>
+        <input v-model="id" type="text" placeholder="Ingrese ID" />
       </div>
       <div class="insertar">
         <p type="Nombre: ">
@@ -19,19 +16,34 @@
           <input v-model="genero" type="text" placeholder="Genero" />
         </p>
         <p type="Fecha de nacimiento: ">
-          <input v-model="fechaNacimiento" type="datetime-local" />
+          <input
+            v-model="fechaNacimiento"
+            type="datetime-local"
+            placeholder="Fecha de naciminento"
+          />
         </p>
-        <p type="Dirección: "><input v-model="direccion" type="text" /></p>
-        <p type="Edad: "><input v-model="edad" type="text" /></p>
+        <p type="Dirección: ">
+          <input v-model="direccion" type="text" placeholder="Direccion" />
+        </p>
+        <p type="Edad: ">
+          <input v-model="edad" type="text" placeholder="Edad" />
+        </p>
         <p type="Correo electrónico: ">
-          <input v-model="correo" type="text" />
+          <input
+            v-model="correo"
+            type="text"
+            placeholder="Correo Electronico"
+          />
         </p>
-        <p type="Facultad: "><input v-model="facultad" type="text" /></p>
-        <p type="Carrera: "><input v-model="carrera" type="text" /></p>
+        <p type="Facultad: ">
+          <input v-model="facultad" type="text" placeholder="Facultad" />
+        </p>
+        <p type="Carrera: ">
+          <input v-model="carrera" type="text" placeholder="Carrera" />
+        </p>
+
         <div class="boton">
-          <button @click="insertar">Insertar</button>
-          <button @click="actualizar">Actualizar</button>
-          <button @click="eliminar">Eliminar</button>
+          <button @click="metodos">{{ txtButon }}</button>
         </div>
       </div>
     </div>
@@ -60,6 +72,12 @@ export default {
       facultad: null,
       carrera: null,
     };
+  },
+  props: {
+    txtButon: {
+      type: String,
+      require: true,
+    },
   },
   methods: {
     async consultarPorId() {
@@ -109,12 +127,25 @@ export default {
     async eliminar() {
       await eliminarFachada(this.id);
     },
+    async metodos() {
+      if (this.txtButon === "Guardar") {
+        await this.insertar();
+      } else if (this.txtButon === "Actualizar") {
+        await this.actualizar();
+      } else if (this.txtButon === "Consultar") {
+        await this.consultarPorId();
+      }
+    },
   },
 };
 </script>
 <style>
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
 body {
-  background-color: #59abe3;
+  background-color: #0091ffb0;
 }
 
 .container {
@@ -127,7 +158,7 @@ body {
 .form {
   width: 340px;
   height: 450px;
-  background-color: #eecfcf;
+  background-color: #ffe6e6;
   border-radius: 8px;
   padding: 20px 30px;
   box-shadow: 0 0 40px -10px #868181;
@@ -147,7 +178,7 @@ input {
   width: 100%;
   border-radius: 5px;
   border-bottom: 1px #ffffff;
-  background: rgb(235, 213, 213);
+  background: rgb(255, 233, 233);
   color: rgb(0, 0, 0);
 }
 
@@ -163,7 +194,6 @@ p {
   border-bottom: 2px solid #bebed2;
 }
 button {
-  align-items: center;
   border-radius: 5px;
   padding: 7px;
   font-size: 14px;
